@@ -1,75 +1,48 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="utf-8">
-<meta content="stuff, to, help, search, engines, not" name="keywords">
-<meta content="What this page is about." name="description">
-<meta content="Display Webcam Stream" name="title">
-<title>Display Webcam Stream</title>
+<!-- <!DOCTYPE html>
 
-<style>
-#container {
-    margin: 100px auto;
-    width: 500px;
-    height: 375px;
-    border: 10px #333 solid;
-}
-#videoElement {
-    width: 500px;
-    height: 375px;
-    background-color: #666;
-}
-</style>
-</head>
-
-<body>
 <div id="container">
     <video autoplay="true" id="videoElement">
 
     </video>
 </div>
-<!-- <video autoplay></video>
-<img src="">
-<canvas style="display:none;"></canvas> -->
-<script>
-var video = document.querySelector("#videoElement");
-
-navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia || navigator.oGetUserMedia;
-
-if (navigator.getUserMedia) {
-    navigator.getUserMedia({video: true}, handleVideo, videoError);
-}
-
-function handleVideo(stream) {
-    video.src = window.URL.createObjectURL(stream);
-}
-
-function videoError(e) {
-    // do something
-}
+<%= javascript_include_tag 'add_photo' %>
+<%= stylesheet_link_tag 'add_photo' %> -->
 
 
-// var video = document.querySelector('video');
-//  var canvas = document.querySelector('canvas');
-//  var ctx = canvas.getContext('2d');
-//  var localMediaStream = null;
-//
-//  function snapshot() {
-//    if (localMediaStream) {
-//      ctx.drawImage(video, 0, 0);
-//      // "image/webp" works in Chrome.
-//      // Other browsers will fall back to image/png.
-//      document.querySelector('img').src = canvas.toDataURL('image/webp');
-//    }
-//  }
-//
-//  video.addEventListener('click', snapshot, false);
-//
-//  // Not showing vendor prefixes or code that works cross-browser.
-//  navigator.getUserMedia({video: true}, function(stream) {
-//    video.src = window.URL.createObjectURL(stream);
-//    localMediaStream = stream;
-//  }, errorCallback);
-</script>
-</body>
-</html>
+
+
+
+<head>
+	<title>Refresh Miami Sign-Up</title>
+	<meta charset='utf-8'>
+</head>
+<body>
+<div class="contentarea">
+	<h1 id="title">
+		Refresh Miami Kairos Facial Recognition Sign up!
+	</h1>
+	<p>
+    <div id="allput">
+	   </p>
+      <div class="camera">
+        <video id="video">Video stream not available.</video>
+        <button id="startbutton">Take photo</button>
+      </div>
+      <canvas id="canvas">
+      </canvas>
+      <div class="output">
+        <img id="photo" alt="The screen capture will appear in this box.">
+      </div>
+	   <p>
+    </div>
+	</p>
+</div>
+
+
+
+<!-- MANIFESTED JSON
+{
+  "name": "WebRTC Still Photo Sample",
+  "docsUrl": "https://developer.mozilla.org/en-US/docs/Web/API/WebRTC_API/Taking_still_photos",
+  "description": "Uses WebRTC's getUserMedia() API, a <video> element, and a <canvas> to capture still photos using your webcam."
+} -->
