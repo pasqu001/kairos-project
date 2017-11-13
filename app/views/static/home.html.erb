@@ -1,8 +1,0 @@
-<% require "httparty" %>
-
-<% response = HTTParty.get("https://www.eventbriteapi.com/v3/events/39707355770/attendees/?token=R3MLTYFWNHNDB53GOBCP") %>
-
-<% first_name = response['attendees'][0]['profile']['first_name'] %>
-<% last_name = response['attendees'][0]['profile']['last_name'] %>
-<% email = response['attendees'][0]['profile']['email'] %>
-<%= response['attendees'][0]['id'] %>
