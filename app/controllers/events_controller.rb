@@ -20,6 +20,8 @@ class EventsController < ApplicationController
       i += 1
     end
     @all_emails = @all_emails.uniq
+    @peeps = @response['attendees']
+    
   end
 
   # GET /events/new
