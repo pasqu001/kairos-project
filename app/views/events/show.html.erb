@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+<% require 'selenium-webdriver' %>
+<% require 'capybara' %>
+<% require 'httparty' %>
+
+<p>
+  <strong>Event:</strong>
+  <%= @event.event_id %>
+
+<br>
+  <ul>
+  <% @all_emails.each do |email| %>
+  <li><%= email %></li>
+  <% end %>
+</ul>
+</p>
+
+<%= link_to 'Edit', edit_event_path(@event) %> |
+<%= link_to 'Back', events_path %>
