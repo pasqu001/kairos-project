@@ -24,13 +24,15 @@
       <td><%= show['profile']['last_name'] %></td>
       <td><%= show['profile']['email'] %></td>
       <td><%= show['id'] %></td>
-      <td>Sign Up Link</td>
+      <td><%= link_to 'Sign Up', users_add_photo_path %></td>
     </tr>
     <% end %>
   </tbody>
+
 </table>
 
-
+<!-- <%= @attendee_list_hashes %> -->
+<%= @attendee_list_arrays %>
 
 <%= link_to 'Edit', edit_event_path(@event) %> |
 <%= link_to 'Back', events_path %>

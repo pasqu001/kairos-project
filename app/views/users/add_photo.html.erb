@@ -17,6 +17,10 @@
 	<meta charset='utf-8'>
 </head>
 <body>
+<% require 'selenium-webdriver' %>
+<% require 'capybara' %>
+<% require 'httparty' %>
+
 <div class="contentarea">
 	<h1 id="title">
 		Refresh Miami Kairos Facial Recognition Sign up!
@@ -38,7 +42,29 @@
 	</p>
 </div>
 
+<%= form_with(model: @user, local: true) do |form| %>
 
+  <div class="field">
+    <%= form.label :first_name %>
+    <%= form.text_field :first_name, :value => "Raul", :readonly => true  %>
+  </div>
+
+  <div class="field">
+    <%= form.label :last_name %>
+    <%= form.text_field :last_name, :value => "Martinez", :readonly => true  %>
+  </div>
+
+	<div class="field">
+    <%= form.label :email %>
+    <%= form.text_field :email, :value => "raulmartinez1855@gmail.com", :readonly => true %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+
+<%= @attendee_list_arrays %>
 
 <!-- MANIFESTED JSON
 {
