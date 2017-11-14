@@ -1,9 +1,4 @@
 class UsersController < ApplicationController
-  def new
-    
-  end
-
-  def show
-
+  def add_photo
   end
 end
