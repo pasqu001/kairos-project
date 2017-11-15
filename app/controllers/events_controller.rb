@@ -1,5 +1,3 @@
-require 'httparty'
-
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
 
@@ -13,18 +11,18 @@ class EventsController < ApplicationController
   # GET /events/1.json
   def show
     @response = HTTParty.get("https://www.eventbriteapi.com/v3/events/#{@event.event_id}/attendees/?token=R3MLTYFWNHNDB53GOBCP")
-    # @attendee_list_hashes = []
+    @attendee_list_hashes = []
     @attendee_list_arrays = []
-    # i = 0
-    # while i < @response['attendees'].length
-    #   @attendee_list_hashes << {
-    #                   first_name: @response['attendees'][i]['profile']['first_name'],
-    #                   last_name: @response['attendees'][i]['profile']['last_name'],
-    #                   email: @response['attendees'][i]['profile']['email'],
-    #                   user_event_id: @response['attendees'][i]['id']
-    #                 }
-    #   i += 1
-    # end
+    i = 0
+    while i < @response['attendees'].length
+      @attendee_list_hashes << {
+                      first_name: @response['attendees'][i]['profile']['first_name'],
+                      last_name: @response['attendees'][i]['profile']['last_name'],
+                      email: @response['attendees'][i]['profile']['email'],
+                      user_event_id: @response['attendees'][i]['id']
+                    }
+      i += 1
+    end
 
     i = 0
     while i < @response['attendees'].length

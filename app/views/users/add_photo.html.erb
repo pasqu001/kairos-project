@@ -46,17 +46,17 @@
 
   <div class="field">
     <%= form.label :first_name %>
-    <%= form.text_field :first_name, :value => "Raul", :readonly => true  %>
+    <%= form.text_field :first_name, :value => @peep_params[:first_name], :readonly => true  %>
   </div>
 
   <div class="field">
     <%= form.label :last_name %>
-    <%= form.text_field :last_name, :value => "Martinez", :readonly => true  %>
+    <%= form.text_field :last_name, :value => @peep_params[:last_name], :readonly => true  %>
   </div>
 
 	<div class="field">
     <%= form.label :email %>
-    <%= form.text_field :email, :value => "raulmartinez1855@gmail.com", :readonly => true %>
+    <%= form.text_field :email, :value => @peep_params[:email], :readonly => true %>
   </div>
 
   <div class="actions">
@@ -64,7 +64,7 @@
   </div>
 <% end %>
 
-<%= @attendee_list_arrays %>
+
 
 <!-- MANIFESTED JSON
 {

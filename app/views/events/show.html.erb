@@ -1,7 +1,4 @@
 <p id="notice"><%= notice %></p>
-<% require 'selenium-webdriver' %>
-<% require 'capybara' %>
-<% require 'httparty' %>
 
 <p>
   <strong>Event:</strong>
@@ -24,15 +21,26 @@
       <td><%= show['profile']['last_name'] %></td>
       <td><%= show['profile']['email'] %></td>
       <td><%= show['id'] %></td>
-      <td><%= link_to 'Sign Up', users_add_photo_path %></td>
+      <td><%= link_to 'Sign Up', users_add_photo_path({
+                  peeps:{
+                      first_name: show['profile']['first_name'],
+                      last_name: show['profile']['last_name'],
+                      email: show['profile']['email'],
+                      user_event_id: show['id'] 
+                      }}) %></td>
     </tr>
     <% end %>
   </tbody>
 
 </table>
-
-<!-- <%= @attendee_list_hashes %> -->
+<br>
 <%= @attendee_list_arrays %>
+<br>
+<br>
+ <%= @attendee_list_hashes %>
+ <br>
+ <br>
+ <%= @response %>
 
 <%= link_to 'Edit', edit_event_path(@event) %> |
 <%= link_to 'Back', events_path %>
