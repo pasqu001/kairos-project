@@ -59,6 +59,8 @@
     <%= form.text_field :email, :value => @peep_params[:email], :readonly => true %>
   </div>
 
+	<%= hidden_field_tag 'img', nil, id: 'img_field' %>
+
   <div class="actions">
     <%= form.submit %>
   </div>

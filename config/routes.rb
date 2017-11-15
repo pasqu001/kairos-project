@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
-  get 'users/add_photo' => 'users#add_photo'
+  post 'users/photos/new' => 'users#new_photo'
+  post 'users/add_photo' => 'users#add_photo'
   resources :users
   resources :events
   root 'home#index'

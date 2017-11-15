@@ -21,26 +21,27 @@
       <td><%= show['profile']['last_name'] %></td>
       <td><%= show['profile']['email'] %></td>
       <td><%= show['id'] %></td>
-      <td><%= link_to 'Sign Up', users_add_photo_path({
-                  peeps:{
-                      first_name: show['profile']['first_name'],
-                      last_name: show['profile']['last_name'],
-                      email: show['profile']['email'],
-                      user_event_id: show['id'] 
-                      }}) %></td>
+      <td>
+        <%= form_with(url: users_photos_new_path, local: true) do |form| %>
+            <%= form.hidden_field 'user[first_name]', :value => show['profile']['first_name']  %>
+            <%= form.hidden_field 'user[last_name]', :value => show['profile']['last_name']  %>
+            <%= form.hidden_field 'user[email]', :value => show['profile']['email'] %>
+            <%= form.submit "Sign Up"%>
+        <% end %>
+      </td>
     </tr>
     <% end %>
   </tbody>
 
 </table>
-<br>
+<!-- <br>
 <%= @attendee_list_arrays %>
 <br>
 <br>
  <%= @attendee_list_hashes %>
  <br>
  <br>
- <%= @response %>
+ <%= @response %> -->
 
 <%= link_to 'Edit', edit_event_path(@event) %> |
 <%= link_to 'Back', events_path %>
