@@ -36,6 +36,9 @@
   var startbutton = null;
 
   function startup() {
+    if ($("#video").length <= 0) {
+      return;
+    }
     video = document.getElementById('video');
     canvas = document.getElementById('canvas');
     photo = document.getElementById('photo');
@@ -102,6 +105,7 @@
 
     var data = canvas.toDataURL('image/png');
     photo.setAttribute('src', data);
+    $("#img_field").val(data);
   }
 
   // Capture a photo by fetching the current contents of the video
@@ -119,7 +123,9 @@
 
       var data = canvas.toDataURL('image/png');
       photo.setAttribute('src', data);
-      console.log(data)
+
+      $("#img_field").val(data);
+
     } else {
       clearphoto();
     }
@@ -127,5 +133,5 @@
 
   // Set up our event listener to run the startup process
   // once loading is complete.
-  window.addEventListener('load', startup, false);
+  window.addEventListener('turbolinks:load', startup, false);
 })();

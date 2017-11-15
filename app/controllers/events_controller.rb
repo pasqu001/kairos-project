@@ -1,5 +1,3 @@
-require 'httparty'
-
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
 
@@ -12,14 +10,43 @@ class EventsController < ApplicationController
   # GET /events/1
   # GET /events/1.json
   def show
+    @user = User.new 
     @response = HTTParty.get("https://www.eventbriteapi.com/v3/events/#{@event.event_id}/attendees/?token=R3MLTYFWNHNDB53GOBCP")
-    @all_emails = []
+    @attendee_list_hashes = []
+    @attendee_list_arrays = []
     i = 0
     while i < @response['attendees'].length
-      @all_emails << @response['attendees'][i]['profile']['email']
+      @attendee_list_hashes << {
+                      first_name: @response['attendees'][i]['profile']['first_name'],
+                      last_name: @response['attendees'][i]['profile']['last_name'],
+                      email: @response['attendees'][i]['profile']['email'],
+                      user_event_id: @response['attendees'][i]['id']
+                    }
       i += 1
     end
-    @all_emails = @all_emails.uniq
+
+    i = 0
+    while i < @response['attendees'].length
+      @attendee_list_arrays << [
+                      @response['attendees'][i]['profile']['first_name'],
+                      @response['attendees'][i]['profile']['last_name'],
+                      @response['attendees'][i]['profile']['email'],
+                      @response['attendees'][i]['id']
+                    ]
+      i += 1
+    end
+
+
+    @peeps = @response['attendees']
+
+    # @peeps.each do |show|
+    #   show['profile']['first_name']
+    #   show['profile']['last_name']
+    #   show['profile']['email']
+    #   show['id']
+    # end
+
+
   end
 
   # GET /events/new

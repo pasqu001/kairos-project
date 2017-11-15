@@ -1,3 +1,13 @@
+GIT
+  remote: git://github.com/kany/kairos-api.git
+  revision: f44eb07cd569dbe353f55b2acbf469dbb093b98b
+  specs:
+    kairos-api (0.0.3)
+      faraday (> 0.8.0)
+      faraday_middleware (> 0.8.7)
+      hashie (> 1.2.0)
+      multi_json (> 1.3)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -64,9 +74,14 @@ GEM
     crass (1.0.2)
     erubi (1.7.0)
     execjs (2.7.0)
+    faraday (0.13.1)
+      multipart-post (>= 1.2, < 3)
+    faraday_middleware (0.12.2)
+      faraday (>= 0.7.4, < 1.0)
     ffi (1.9.18)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
+    hashie (3.5.6)
     httparty (0.15.6)
       multi_xml (>= 0.5.2)
     i18n (0.9.1)
@@ -89,6 +104,7 @@ GEM
     minitest (5.10.3)
     multi_json (1.12.2)
     multi_xml (0.6.0)
+    multipart-post (2.0.0)
     nio4r (2.1.0)
     nokogiri (1.8.1)
       mini_portile2 (~> 2.3.0)
@@ -183,6 +199,7 @@ DEPENDENCIES
   coffee-rails (~> 4.2)
   httparty
   jbuilder (~> 2.5)
+  kairos-api!
   listen (>= 3.0.5, < 3.2)
   puma (~> 3.7)
   rails (~> 5.1.4)
