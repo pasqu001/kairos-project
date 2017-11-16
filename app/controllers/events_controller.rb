@@ -10,43 +10,11 @@ class EventsController < ApplicationController
   # GET /events/1
   # GET /events/1.json
   def show
-    @user = User.new 
+    @user = User.new
     @response = HTTParty.get("https://www.eventbriteapi.com/v3/events/#{@event.event_id}/attendees/?token=R3MLTYFWNHNDB53GOBCP")
-    @attendee_list_hashes = []
-    @attendee_list_arrays = []
-    i = 0
-    while i < @response['attendees'].length
-      @attendee_list_hashes << {
-                      first_name: @response['attendees'][i]['profile']['first_name'],
-                      last_name: @response['attendees'][i]['profile']['last_name'],
-                      email: @response['attendees'][i]['profile']['email'],
-                      user_event_id: @response['attendees'][i]['id']
-                    }
-      i += 1
-    end
-
-    i = 0
-    while i < @response['attendees'].length
-      @attendee_list_arrays << [
-                      @response['attendees'][i]['profile']['first_name'],
-                      @response['attendees'][i]['profile']['last_name'],
-                      @response['attendees'][i]['profile']['email'],
-                      @response['attendees'][i]['id']
-                    ]
-      i += 1
-    end
-
-
+    @response1 = HTTParty.get("https://www.eventbriteapi.com/v3/events/#{@event.event_id}/?token=R3MLTYFWNHNDB53GOBCP")
     @peeps = @response['attendees']
-
-    # @peeps.each do |show|
-    #   show['profile']['first_name']
-    #   show['profile']['last_name']
-    #   show['profile']['email']
-    #   show['id']
-    # end
-
-
+    @event_name = @response1['name']['text']
   end
 
   # GET /events/new
@@ -107,5 +75,9 @@ class EventsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
       params.require(:event).permit(:event_id)
+    end
+
+    def user_params
+      params.require(:user).permit(:first_name, :last_name, :email)
     end
 end
