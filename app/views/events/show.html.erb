@@ -1,8 +1,10 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Event:</strong>
+  <strong>Event ID:</strong>
   <%= @event.event_id %>
+  <strong>Event Name:</strong>
+  <%= @event_name %>
 
 <table>
   <tr>
@@ -10,7 +12,6 @@
       <th>First Name</th>
       <th>Last Name</th>
       <th>Email</th>
-      <th>User Event ID</th>
       <th>Sign Up</th>
     </thead>
   </tr>
@@ -20,7 +21,6 @@
       <td><%= show['profile']['first_name'] %></td>
       <td><%= show['profile']['last_name'] %></td>
       <td><%= show['profile']['email'] %></td>
-      <td><%= show['id'] %></td>
       <td>
         <%= form_with(url: users_photos_new_path, local: true) do |form| %>
             <%= form.hidden_field 'user[first_name]', :value => show['profile']['first_name']  %>
@@ -34,14 +34,6 @@
   </tbody>
 
 </table>
-<!-- <br>
-<%= @attendee_list_arrays %>
-<br>
-<br>
- <%= @attendee_list_hashes %>
- <br>
- <br>
- <%= @response %> -->
 
 <%= link_to 'Edit', edit_event_path(@event) %> |
 <%= link_to 'Back', events_path %>
