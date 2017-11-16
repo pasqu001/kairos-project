@@ -14,7 +14,7 @@
         <td><%= event.event_id %></td>
         <td><%= link_to 'Show attendees', event, class:"waves-effect waves-light btn z-depth-4"%></td>
         <td><%= link_to 'Edit event', edit_event_path(event), class:"waves-effect waves-light btn z-depth-4" %></td>
-        <td><%= link_to 'Remove event', event, class:"waves-effect waves-light btn z-depth-4" , method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Remove event', event, class:"waves-effect waves-light btn z-depth-4 red" , method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
