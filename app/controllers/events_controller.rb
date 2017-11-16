@@ -1,5 +1,10 @@
+require 'kairos'
+require 'selenium-webdriver'
+require 'capybara'
+require 'httparty'
+
 class EventsController < ApplicationController
-  before_action :set_event, only: [:show, :edit, :update, :destroy]
+  before_action :set_event, only: [:show, :edit, :update, :destroy, :verify_photo, :send_photo]
 
   # GET /events
   # GET /events.json
@@ -64,6 +69,61 @@ class EventsController < ApplicationController
       format.html { redirect_to events_url, notice: 'Event was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def verify_photo
+
+  end
+
+  def send_photo
+    client = Kairos::Client.new(:app_id => ENV['KAIROS_APP_ID'], :app_key => ENV['KAIROS_APP_KEY'])
+    @face_response = client.recognize(:url => params[:img], :gallery_name => 'refreshkairos', :threshold => '.8', :max_num_results => '1')
+    @face_found = @face_response['images'] [0]['transaction']['status']
+    # render json: @face_response
+    @kairos_user_id = @face_response['images'] [0]['transaction']['subject_id'].to_i
+    if @face_found == "success"
+      @found_user = User.find(@kairos_user_id)
+      @found_user_email = @found_user.email
+      @response = HTTParty.get("https://www.eventbriteapi.com/v3/events/#{@event.event_id}/attendees/?token=R3MLTYFWNHNDB53GOBCP")
+      i = 0
+      while i < @response['attendees'].length
+        case
+        when @response['attendees'][i]['profile']['email'].include?(@found_user_email)
+            @user_event_id = @response['attendees'][i]['id']
+        end
+        i += 1
+      end
+
+      Capybara.register_driver :selenium do |app|
+        Capybara::Selenium::Driver.new(app, browser: :chrome)
+      end
+      Capybara.javascript_driver = :chrome
+      Capybara.configure do |config|
+        config.default_max_wait_time = 10 # seconds
+        config.default_driver = :selenium
+      end
+      # Visit
+      browser = Capybara.current_session
+      driver = browser.driver.browser
+
+      browser.visit "https://www.eventbrite.com/checkin?eid=#{@event.event_id}"
+      browser.fill_in('signin-email', :with => 'raulmartinez1855@gmail.com')
+      browser.find('button').click
+      browser.fill_in('password', :with => 'ninja150')
+      browser.find('button[type="submit"]').click
+
+      if browser.find("span[title='#{@found_user_email}']")
+        browser.find("span#checkin_button_#{@user_event_id}").click
+      else
+        puts "nah"
+      end
+      sleep 2
+    else
+      "YOU SUCK GO SIGN UP OR GET A BETTER FACE"
+    end
+  end
+
+  def welcome
   end
 
   private
