@@ -1,27 +1,30 @@
 <p id="notice"><%= notice %></p>
-
-<h1>Events</h1>
-
-<table>
+<div class="container">
+<h1>Your Events</h1>
+<table class="center-div">
   <thead>
     <tr>
-      <th>Event</th>
+      <th>Event ID</th>
       <th colspan="3"></th>
     </tr>
   </thead>
-
   <tbody>
     <% @events.each do |event| %>
       <tr>
         <td><%= event.event_id %></td>
-        <td><%= link_to 'Show', event %></td>
-        <td><%= link_to 'Edit', edit_event_path(event) %></td>
-        <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show attendees', event, class:"waves-effect waves-light btn z-depth-4"%></td>
+        <td><%= link_to 'Edit event', edit_event_path(event), class:"waves-effect waves-light btn z-depth-4" %></td>
+        <td><%= link_to 'Remove event', event, class:"waves-effect waves-light btn z-depth-4" , method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
 <br>
-
-<%= link_to 'New Event', new_event_path %>
+<tbody>
+  <thead>
+    <tr>
+      <td><%= link_to 'New Event', new_event_path, class:"waves-effect waves-light btn z-depth-4"  %></td>
+    </tr>
+  </thead>
+</tbody>
+</div>
