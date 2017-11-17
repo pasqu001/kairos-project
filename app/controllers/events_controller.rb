@@ -117,7 +117,7 @@ class EventsController < ApplicationController
       else
         puts "nah"
       end
-      sleep 2
+      sleep 6
     else
       "YOU SUCK GO SIGN UP OR GET A BETTER FACE"
     end
