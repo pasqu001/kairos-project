@@ -107,7 +107,7 @@ class EventsController < ApplicationController
         end
         # Visit
         browser = Capybara.current_session
-        driver = browser.driver.browser
+        # driver = browser.driver.browser
 
         browser.visit "https://www.eventbrite.com/checkin?eid=#{@event.event_id}"
         browser.fill_in('signin-email', :with => 'raulmartinez1855@gmail.com')
@@ -117,6 +117,7 @@ class EventsController < ApplicationController
 
         if browser.find("span[title='#{@found_user_email}']") && browser.find("span#checkin_button_#{@user_event_id}")
           browser.find("span#checkin_button_#{@user_event_id}").click
+          driver.
         else
           puts "nah"
         end
