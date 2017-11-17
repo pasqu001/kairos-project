@@ -107,7 +107,7 @@ class EventsController < ApplicationController
         end
         # Visit
         browser = Capybara.current_session
-        driver = browser.driver.browser
+        # driver = browser.driver.browser
 
         browser.visit "https://www.eventbrite.com/checkin?eid=#{@event.event_id}"
         browser.fill_in('signin-email', :with => 'raulmartinez1855@gmail.com')
@@ -115,12 +115,17 @@ class EventsController < ApplicationController
         browser.fill_in('password', :with => 'ninja150')
         browser.find('button[type="submit"]').click
 
-        if browser.find("span[title='#{@found_user_email}']") && browser.find("span#checkin_button_#{@user_event_id}")
-          browser.find("span#checkin_button_#{@user_event_id}").click
+        if browser.find("span[title='#{@found_user_email}']")
+          if browser.find("i#checkin_button_#{@user_event_id}")
+             browser.driver.quit
+             redirect_to verify_photo_path
+          else
+             browser.find("span#checkin_button_#{@user_event_id}").click
+          end
         else
           puts "nah"
         end
-        sleep 6
+        sleep 2
     end
   end
 
