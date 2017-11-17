@@ -81,7 +81,7 @@ class EventsController < ApplicationController
 
     if @face_response['images'].nil?
       @face_response['Errors'][0]['Message']
-      redirect_to root_path
+      redirect_back(fallback_location: root_path, notice:"you suck")
     else
       @face_response['images'][0]['transaction']['status'] == "success"
         @kairos_user_id = @face_response['images'] [0]['transaction']['subject_id'].to_i
@@ -121,10 +121,13 @@ class EventsController < ApplicationController
           puts "nah"
         end
         sleep 6
+
+        render :welcome
     end
   end
 
   def welcome
+
   end
 
   private
