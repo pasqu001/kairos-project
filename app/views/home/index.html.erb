@@ -31,6 +31,11 @@
 
 
 <%#=
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Everything below if for api request testing
+
+
+
 {"pagination":
 	{
 	 "object_count": 1,
@@ -114,5 +119,49 @@
 		}
 	]
 }
+
+event id: 39880693227
+token for raul: R3MLTYFWNHNDB53GOBCP
+
+gabriel api
+https://www.eventbriteapi.com/v3/events/attendees/?token=WYYVY4N37HIWMKE57EY5
+https://www.eventbriteapi.com/v3/events/39778577797/attendees/?token=WYYVY4N37HIWMKE57EY5
+https://www.eventbriteapi.com/v3/events/39778577797/display_settings/?token=WYYVY4N37HIWMKE57EY5
+https://www.eventbriteapi.com/v3/events/39778577797/?token=WYYVY4N37HIWMKE57EY5
+
+
+
+
+
+
+~~~~~~~~~~
+gabriels event
+https://www.eventbriteapi.com/v3/events/39778577797/?token=WYYVY4N37HIWMKE57EY5
+event_name_response = HTTParty.get('https://www.eventbriteapi.com/v3/events/39778577797/?token=WYYVY4N37HIWMKE57EY5')
+@reponse = event_response_name['name']['text']
+this will get me the name of the event
+~~~~~~~~~~
+
+
+
+
+~~~~~~~~~~
+%>
+
+
+
+
+
+
+<%# 
+"name"=>{"text"=>"rails-testing-2", "html"=>"rails-testing-2"}, "description"=>{"text"=>"testing", "html"=>"<P>testing</P>"}, "id"=>"39778577797", "url"=>"https://www.eventbrite.com/e/rails-testing-2-tickets-39778577797", "start"=>{"timezone"=>"America/New_York", "local"=>"2017-11-10T13:30:00", "utc"=>"2017-11-10T18:30:00Z"}, "end"=>{"timezone"=>"America/New_York", "local"=>"2017-11-10T23:30:00", "utc"=>"2017-11-11T04:30:00Z"}, "created"=>"2017-11-10T18:18:39Z", "changed"=>"2017-11-11T08:30:50Z", "capacity"=>20, "capacity_is_custom"=>false, "status"=>"completed", "currency"=>"USD", "listed"=>false, "shareable"=>true, "invite_only"=>false, "online_event"=>false, "show_remaining"=>true, "tx_time_limit"=>480, "hide_start_date"=>false, "hide_end_date"=>false, "locale"=>"en_US", "is_locked"=>false, "privacy_setting"=>"unlocked", "is_series"=>false, "is_series_parent"=>false, "is_reserved_seating"=>false, "source"=>"create_2.0", "is_free"=>true, "version"=>"3.0.0", "logo_id"=>nil, "organizer_id"=>"15701787473", "venue_id"=>"22024089", "category_id"=>nil, "subcategory_id"=>nil, "format_id"=>nil, "resource_uri"=>"https://www.eventbriteapi.com/v3/events/39778577797/", "logo"=>nil}, @response=#<Net::HTTPOK 200 OK readbody=true>, @headers={"server"=>["nginx"], "date"=>["Thu, 16 Nov 2017 00:23:40 GMT"], "content-type"=>["application/json"], "content-length"=>["544"], "connection"=>["close"], "x-xss-protection"=>["1; mode=block"], "x-content-type-options"=>["nosniff"], "vary"=>["Accept, Accept-Encoding"], "x-rate-limit"=>["token:WYYVY4N37HIWMKE57EY5 6/2000 reset=2869s, key:ZTMYYAP5ACY2FIT2SX 6/2000 reset=2869s"], "allow"=>["GET, POST, DELETE, HEAD, OPTIONS"], "x-frame-options"=>["SAMEORIGIN"], "access-control-allow-origin"=>["*"], "access-control-allow-headers"=>["Authorization, Content-Type"], "p3p"=>["CP=\"NOI ADM DEV PSAi COM NAV OUR OTRo STP IND DEM\""], "x-ua-compatible"=>["IE=edge"], "set-cookie"=>["mgrefby=; Domain=.eventbriteapi.com; expires=Fri, 16-Nov-2018 00:23:40 GMT; httponly; Max-Age=31536000; Path=/; secure", "G=v%3D2%26i%3De7124eae-f041-4e4d-a67f-2569557c2e1f%26a%3D956%26s%3Ddcd35bf3fb74abd63848d5f3abeacb779e39ef40; Domain=.eventbriteapi.com; expires=Fri, 16-Nov-2018 00:23:40 GMT; httponly; Path=/; secure", "ebEventToTrack=; Domain=.eventbrite.com; expires=Sat, 16-Dec-2017 00:23:40 GMT; httponly; Path=/; secure", "SS=AE3DLHRL7CyOWw8ojF7B90mksGemwDT8qw; Domain=.eventbriteapi.com; httponly; Path=/; secure", "eblang=lo%3Den_US%26la%3Den-us; Domain=.eventbriteapi.com; expires=Fri, 16-Nov-2018 00:23:40 GMT; httponly; Path=/; secure", "AN=; Domain=.eventbrite.com; expires=Sat, 16-Dec-2017 00:23:40 GMT; httponly; Path=/; secure", "mgref=typeins; Domain=.eventbriteapi.com; expires=Fri, 16-Nov-2018 00:23:40 GMT; httponly; Max-Age=31536000; Path=/; secure", "SP=AGQgbblqWLP4Y7wA1iMiS-hJkMxFUJtBBTXc-XZiyAhTyF2nBXHgvcEsm37n_KvnSWVw0lj62yb-Ikwown1esyf-ChhRlwsujE9PbSIpYJm2yhazxjf8WxRGnEkCwTTDdoEY2zWXNEiz5G9Rsqbug3x0oo_aD0VmwhKp3nZf9J0krbWviR6Acg52Sh-fUAy7kZgoKNkXMY6IaeYzmC8fri-B9D4sKeaEWu7-kD7ZgeIKzVKEepa1XOw; Domain=.eventbriteapi.com; httponly; Path=/; secure"]} 
+
+
+
+
+
+
+
+
 
 %>
