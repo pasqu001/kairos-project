@@ -1,49 +1,47 @@
-<div class="contentarea">
+<div class="contentarea container">
 	<h1 id="title">
 		Refresh Miami Kairos Facial Recognition Sign up!
 	</h1>
-	<p>
-    <div id="allput">
-	   </p>
+
+  <div id="allput">
+	   
       <div class="camera">
         <video id="video">Video stream not available.</video>
-        <button id="startbutton">Take photo</button>
+        <button id="startbutton" class="waves-effect waves-light btn z-depth-4">Take photo</button>
       </div>
       <canvas id="canvas">
       </canvas>
       <div class="output">
         <img id="photo" alt="The screen capture will appear in this box.">
       </div>
-	   <p>
-    </div>
-	</p>
+
+  </div>
 </div>
+<div class="container">
+  <%= form_with(model: @user, local: true) do |form| %>
 
-<%= form_with(model: @user, local: true) do |form| %>
+    <div class="field">
+      <%= form.label :first_name %></p>
+      <%= form.text_field :first_name, :value => @peep_params[:first_name], :readonly => true , :style => "color: limegreen; text-align: center;"%>
+    </div>
 
-  <div class="field">
-    <%= form.label :first_name %>
-    <%= form.text_field :first_name, :value => @peep_params[:first_name], :readonly => true  %>
-  </div>
+    <div class="field">
+      <%= form.label :last_name %>
+      <%= form.text_field :last_name, :value => @peep_params[:last_name], :readonly => true , :style => "color: limegreen; text-align: center;"%>
+    </div>
 
-  <div class="field">
-    <%= form.label :last_name %>
-    <%= form.text_field :last_name, :value => @peep_params[:last_name], :readonly => true  %>
-  </div>
+  	<div class="field">
+      <%= form.label :email %>
+      <%= form.text_field :email, :value => @peep_params[:email], :readonly => true , :style => "color: limegreen; text-align: center;"%>
+    </div>
 
-	<div class="field">
-    <%= form.label :email %>
-    <%= form.text_field :email, :value => @peep_params[:email], :readonly => true %>
-  </div>
+  	<%= hidden_field_tag 'img', nil, id: 'img_field' %>
 
-	<%= hidden_field_tag 'img', nil, id: 'img_field' %>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
-
-
+    <div class="actions">
+      <%= form.submit class:"waves-effect waves-light btn z-depth-4" %>
+    </div>
+  <% end %>
+</div>
 
 <!-- MANIFESTED JSON
 {

@@ -1,11 +1,11 @@
 <p id="notice"><%= notice %></p>
-
+<div class="container">
 <p>
   <strong>Event ID:</strong>
-  <%= @event.event_id %>
+   <td><%= @event.event_id %></td>
   <strong>Event Name:</strong>
-  <%= @event_name %>
-
+   <td><%= @event_name %></td>
+</p>
 <table>
   <tr>
     <thead>
@@ -26,14 +26,13 @@
             <%= form.hidden_field 'user[first_name]', :value => show['profile']['first_name']  %>
             <%= form.hidden_field 'user[last_name]', :value => show['profile']['last_name']  %>
             <%= form.hidden_field 'user[email]', :value => show['profile']['email'] %>
-            <%= form.submit "Sign Up"%>
+            <%= form.submit "Sign Up", class:"waves-effect waves-light btn z-depth-4"%>
         <% end %>
       </td>
     </tr>
     <% end %>
   </tbody>
-
 </table>
-
-<%= link_to 'Edit', edit_event_path(@event) %> |
-<%= link_to 'Back', events_path %>
+<%#= link_to 'Edit', edit_event_path(@event), class:"waves-effect waves-light btn z-depth-4" %>
+<%= link_to 'Back', events_path, class:"waves-effect waves-light btn z-depth-4" %>
+</div>

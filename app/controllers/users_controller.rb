@@ -26,6 +26,7 @@ class UsersController < ApplicationController
       client = Kairos::Client.new(:app_id => ENV['KAIROS_APP_ID'], :app_key => ENV['KAIROS_APP_KEY'])
       client.enroll(:url => params[:img], :subject_id => @user.id, :gallery_name => 'refreshkairos')
       redirect_to @user
+      
     end
   end
 
