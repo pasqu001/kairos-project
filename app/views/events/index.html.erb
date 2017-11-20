@@ -1,3 +1,20 @@
+<% unless current_admin %>
+<div class="container" style="color: white">
+<%= form_tag '/login' do %>
+  <h1>Log in</h1>
+  Email: <%= text_field_tag :email %>
+  Password: <%= password_field_tag :password %>
+  <%= submit_tag "Submit" , class:"waves-effect waves-light btn z-depth-4", style:"border-radius:2em"%>
+
+<% end %>
+</div>
+<% else %>
+<% if current_admin %>
+  <div style="color: white; margin-left: 1em">Signed in as <%= current_admin.name %></div>
+  <%= link_to "Logout", '/logout' , style:"float:right; margin-right: 1em; border-radius:2em",class:"waves-effect waves-light btn z-depth-4" %>
+  <% else %>
+  <%= link_to 'Login', '/login' %> | <%= link_to 'Signup', '/signup' %>
+  <% end %>
 <p id="notice"><%= notice %></p>
 <div class="container">
 <h1>Your Events</h1>
@@ -12,9 +29,9 @@
     <% @events.each do |event| %>
       <tr>
         <td><%= event.event_id %></td>
-        <td><%= link_to 'Show attendees', event, class:"waves-effect waves-light btn z-depth-4"%></td>
-        <td><%= link_to 'Edit event', edit_event_path(event), class:"waves-effect waves-light btn z-depth-4" %></td>
-        <td><%= link_to 'Remove event', event, class:"waves-effect waves-light btn z-depth-4 red" , method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show attendees', event, class:"waves-effect waves-light btn z-depth-4", style:"border-radius:2em"%></td>
+        <td><%= link_to 'Edit event', edit_event_path(event), class:"waves-effect waves-light btn z-depth-4", style:"border-radius:2em" %></td>
+        <td><%= link_to 'Remove event', event, class:"waves-effect waves-light btn z-depth-4 red" , style:"border-radius:2em", method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -23,8 +40,9 @@
 <tbody>
   <thead>
     <tr>
-      <td><%= link_to 'New Event', new_event_path, class:"waves-effect waves-light btn z-depth-4"  %></td>
+      <td><%= link_to 'New Event', new_event_path, class:"waves-effect waves-light btn z-depth-4" , style:"border-radius:2em" %></td>
     </tr>
   </thead>
 </tbody>
 </div>
+<% end %>

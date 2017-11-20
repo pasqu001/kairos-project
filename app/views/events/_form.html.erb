@@ -1,4 +1,13 @@
+<% unless current_admin %>
 <div class="container">
+  <%= form_tag '/login' do %>
+  <h1>Log in</h1>
+  Email: <%= text_field_tag :email %>
+  Password: <%= password_field_tag :password %>
+  <%= submit_tag "Submit" , class:"waves-effect waves-light btn z-depth-4", style:"border-radius:2em"%>
+
+  <% end %>
+  <% else %>
 <%= form_with(model: event, remote: true) do |form| %>
   <% if event.errors.any? %>
     <div id="error_explanation">
@@ -18,8 +27,12 @@
   </div>
 
   <div class="actions">
-    <%= form.submit "Add Event", class:"waves-effect waves-light btn z-depth-4" %>
+    <%= form.submit "Add Event", class:"waves-effect waves-light btn z-depth-4" %><br>
+    <br>
+    <%= link_to 'Go Back', events_path, class:"waves-effect waves-light btn z-depth-4" %>
   </div>
-  <%= link_to 'Go Back', events_path, class:"waves-effect waves-light btn z-depth-4" %>
+  
 <% end %>
 </div>
+
+<% end %>

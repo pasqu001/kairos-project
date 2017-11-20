@@ -1,10 +1,20 @@
+<% unless current_admin %>
 <p id="notice"><%= notice %></p>
 <div class="container">
+<%= form_tag '/login' do %>
+  <h1>Log in</h1>
+  Email: <%= text_field_tag :email %>
+  Password: <%= password_field_tag :password %>
+  <%= submit_tag "Submit" , class:"waves-effect waves-light btn z-depth-4", style:"border-radius:2em"%>
+<% end %>
+<% else %>
 <p>
-  <strong>Event ID:</strong>
-   <td><%= @event.event_id %></td>
-  <strong>Event Name:</strong>
-   <td><%= @event_name %></td>
+  <div>
+  <h5><strong>Event Name:</strong><td><%= @event_name %></td></h5>
+  </div>
+  <div>
+  <h5><strong>Event ID:</strong><td><%= @event.event_id %></td></h5>
+  </div>
 </p>
 <table>
   <tr>
@@ -26,7 +36,7 @@
             <%= form.hidden_field 'user[first_name]', :value => show['profile']['first_name']  %>
             <%= form.hidden_field 'user[last_name]', :value => show['profile']['last_name']  %>
             <%= form.hidden_field 'user[email]', :value => show['profile']['email'] %>
-            <%= form.submit "Sign Up", class:"waves-effect waves-light btn z-depth-4"%>
+            <%= form.submit "Sign Up", class:"waves-effect waves-light btn z-depth-4", style:"border-radius:2em"%>
         <% end %>
       </td>
     </tr>
@@ -34,5 +44,6 @@
   </tbody>
 </table>
 <%#= link_to 'Edit', edit_event_path(@event), class:"waves-effect waves-light btn z-depth-4" %>
-<%= link_to 'Back', events_path, class:"waves-effect waves-light btn z-depth-4" %>
+<%= link_to 'Back', events_path, class:"waves-effect waves-light btn z-depth-4", style:"border-radius:2em" %>
 </div>
+<% end %>
