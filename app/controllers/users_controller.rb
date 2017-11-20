@@ -15,7 +15,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       client = Kairos::Client.new(:app_id => ENV['KAIROS_APP_ID'], :app_key => ENV['KAIROS_APP_KEY'])
-      client.enroll(:url => params[:img], :subject_id => @user.id, :gallery_name => 'refresh_kairos')
+      client.enroll(:url => params[:img], :subject_id => @user.id, :gallery_name => 'refreshmiami')
       redirect_to @user
     end
   end
@@ -24,9 +24,8 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       client = Kairos::Client.new(:app_id => ENV['KAIROS_APP_ID'], :app_key => ENV['KAIROS_APP_KEY'])
-      client.enroll(:url => params[:img], :subject_id => @user.id, :gallery_name => 'refreshkairos')
+      client.enroll(:url => params[:img], :subject_id => @user.id, :gallery_name => 'refreshmiami')
       redirect_to @user
-      
     end
   end
 

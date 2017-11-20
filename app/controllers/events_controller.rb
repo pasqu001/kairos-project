@@ -76,7 +76,7 @@ class EventsController < ApplicationController
 
   def send_photo
     client = Kairos::Client.new(:app_id => ENV['KAIROS_APP_ID'], :app_key => ENV['KAIROS_APP_KEY'])
-    @face_response = client.recognize(:url => params[:img], :gallery_name => 'refreshkairos', :threshold => '.8', :max_num_results => '1')
+    @face_response = client.recognize(:url => params[:img], :gallery_name => 'refreshmiami', :threshold => '.8', :max_num_results => '1')
     # render json: @face_response
 
     if @face_response['images'].nil?
