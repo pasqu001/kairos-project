@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 20171113215415) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "events", force: :cascade do |t|
     t.string "event_id"
     t.datetime "created_at", null: false
