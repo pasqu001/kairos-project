@@ -79,9 +79,8 @@ class EventsController < ApplicationController
     @face_response = client.recognize(:url => params[:img], :gallery_name => 'refreshmiami', :threshold => '.8', :max_num_results => '1')
     # render json: @face_response
 
-    if @face_response['images'].nil?
-      @face_response['Errors'][0]['Message']
-      redirect_to root_path
+    if @face_response['images'].nil? || @face_response['images'][0]['transaction']['status'] == "failure"
+      redirect_back(fallback_location: root_path, notice:"Could not recognize you.")
     else
       @face_response['images'][0]['transaction']['status'] == "success"
         @kairos_user_id = @face_response['images'] [0]['transaction']['subject_id'].to_i
@@ -107,6 +106,7 @@ class EventsController < ApplicationController
         end
         # Visit
         browser = Capybara.current_session
+        browser.driver.quit
         # driver = browser.driver.browser
 
         browser.visit "https://www.eventbrite.com/checkin?eid=#{@event.event_id}"
@@ -115,17 +115,16 @@ class EventsController < ApplicationController
         browser.fill_in('password', :with => 'ninja150')
         browser.find('button[type="submit"]').click
 
-        if browser.find("span[title='#{@found_user_email}']")
-          if browser.find("i#checkin_button_#{@user_event_id}")
-             browser.driver.quit
-             redirect_to verify_photo_path
-          else
-             browser.find("span#checkin_button_#{@user_event_id}").click
-          end
-        else
-          puts "nah"
+        browser.find("span[title='#{@found_user_email}']")
+        begin
+          browser.find("span#checkin_button_#{@user_event_id}").click
+        rescue Capybara::ElementNotFound
+          browser.find("i#checkin_button_#{@user_event_id}")
+        rescue Capybara::ElementNotFound
         end
-        sleep 2
+      sleep 1
+      browser.driver.quit
+      render :welcome
     end
   end
 
