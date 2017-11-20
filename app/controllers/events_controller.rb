@@ -122,7 +122,7 @@ class EventsController < ApplicationController
           browser.find("i#checkin_button_#{@user_event_id}")
         rescue Capybara::ElementNotFound
         end
-      sleep 2
+      sleep 1
       browser.driver.quit
       render :welcome
     end
