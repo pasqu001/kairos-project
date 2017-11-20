@@ -1,13 +1,15 @@
 <div class="contentarea container">
 	<h1 id="title">
-		Refresh Miami Kairos Facial Recognition Sign up!
+Facial Recognition Sign up!
 	</h1>
+  <br>
 
   <div id="allput">
 	   
       <div class="camera">
         <video id="video">Video stream not available.</video>
-        <button id="startbutton" class="waves-effect waves-light btn z-depth-4">Take photo</button>
+        <button id="startbutton" class="waves-effect waves-light btn z-depth-4" style="margin-left: 7em;
+  margin-top: 1em">Capture</button>
       </div>
       <canvas id="canvas">
       </canvas>
@@ -38,7 +40,7 @@
   	<%= hidden_field_tag 'img', nil, id: 'img_field' %>
 
     <div class="actions">
-      <%= form.submit class:"waves-effect waves-light btn z-depth-4" %>
+      <%= form.submit class:"waves-effect waves-light btn z-depth-4", style:"border-radius:2em"%>
     </div>
   <% end %>
 </div>

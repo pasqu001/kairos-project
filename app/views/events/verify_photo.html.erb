@@ -1,7 +1,7 @@
-<div class="contentarea">
-	<h1 id="title">
-		Refresh Miami Kairos Facial Recognition Sign in!
-	</h1>
+<div class=:"container">
+<div class="contentarea container">
+	<h1 id="title">Sign in!</h1>
+
 	<div class="flash-message">
 	  <% if flash[:notice] %>
 	    <h2><%= flash[:notice] %></h2>
@@ -27,6 +27,7 @@
 <%= hidden_field_tag 'img', nil, id: 'img_field' %>
 
 <div class="actions">
-	<%= form.submit "Click to Check In" %>
+	<%= form.submit "Click to Check In" , class:"waves-effect waves-light btn z-depth-4", style:"border-radius:2em;" %>
 </div>
 <% end %>
+</div>
