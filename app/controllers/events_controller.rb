@@ -1,7 +1,7 @@
 require 'kairos'
 # require 'selenium-webdriver'
-require 'capybara'
-require 'httparty'
+# require 'capybara'
+# require 'httparty'
 
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy, :verify_photo, :send_photo]
@@ -110,9 +110,9 @@ class EventsController < ApplicationController
         # driver = browser.driver.browser
 
         browser.visit "https://www.eventbrite.com/checkin?eid=#{@event.event_id}"
-        browser.fill_in('signin-email', :with => 'ADMIN NAME')
+        browser.fill_in('signin-email', :with => ENV['EVENT_BRITE_LOGIN'])
         browser.find('button').click
-        browser.fill_in('password', :with => 'ADMIN PASS')
+        browser.fill_in('password', :with => ENV['EVENT_PASS'])
         browser.find('button[type="submit"]').click
 
         browser.find("span[title='#{@found_user_email}']")
