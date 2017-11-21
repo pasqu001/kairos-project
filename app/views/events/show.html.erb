@@ -1,6 +1,6 @@
+<div class="container">
 <% unless current_admin %>
 <p id="notice"><%= notice %></p>
-<div class="container">
 <%= form_tag '/login' do %>
   <h1>Log in</h1>
   Email: <%= text_field_tag :email %>
