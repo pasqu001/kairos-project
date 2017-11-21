@@ -43,30 +43,42 @@
     canvas = document.getElementById('canvas');
     photo = document.getElementById('photo');
     startbutton = document.getElementById('startbutton');
+    // Prefer camera resolution nearest to 1280x720.
 
-    navigator.getMedia = ( navigator.getUserMedia ||
-                           navigator.webkitGetUserMedia ||
-                           navigator.mozGetUserMedia ||
-                           navigator.msGetUserMedia);
+    var constraints = { audio: true, video: { width: 700, height: 600 } };
 
-    navigator.getMedia(
-      {
-        video: true,
-        audio: false
-      },
-      function(stream) {
-        if (navigator.mozGetUserMedia) {
-          video.mozSrcObject = stream;
-        } else {
-          var vendorURL = window.URL || window.webkitURL;
-          video.src = vendorURL.createObjectURL(stream);
-        }
+    navigator.mediaDevices.getUserMedia(constraints)
+    .then(function(mediaStream) {
+      var video = document.querySelector('video');
+      video.srcObject = mediaStream;
+      video.onloadedmetadata = function(e) {
         video.play();
-      },
-      function(err) {
-        console.log("An error occured! " + err);
-      }
-    );
+      };
+    })
+
+    // navigator.getMedia = ( navigator.getUserMedia ||
+    //                        navigator.webkitGetUserMedia ||
+    //                        navigator.mozGetUserMedia ||
+    //                        navigator.msGetUserMedia);
+
+    // navigator.getMedia(
+    //   {
+    //     video: true,
+    //     audio: false
+    //   },
+    //   function(stream) {
+    //     if (navigator.mozGetUserMedia) {
+    //       video.mozSrcObject = stream;
+    //     } else {
+    //       var vendorURL = window.URL || window.webkitURL;
+    //       video.src = vendorURL.createObjectURL(stream);
+    //     }
+    //     video.play();
+    //   },
+    //   function(err) {
+    //     console.log("An error occured! " + err);
+    //   }
+    // );
 
     video.addEventListener('canplay', function(ev){
       if (!streaming) {
