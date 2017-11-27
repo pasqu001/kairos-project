@@ -1,24 +1,11 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
+This is an application utilizing the Kairos Facial Recognition API and the Eventbrite API. It is used to sign-in attendees of an eventbrite event to an event. Using facial recognition.
 
 * System dependencies
+Phantom JS
+Poltergeist
+or 
+Capybara
+Selenium Webdriver
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
